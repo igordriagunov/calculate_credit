@@ -2,10 +2,10 @@ def calculate_annuitet_credit(credit_sum, percent_in_year, credit_months):
     """
     >>> calculate_annuitet_credit(40_000, 22, 24) # doctest: +ELLIPSIS
     2075.12...
-
-    >>> calculate_annuitet_credit(100_000, 0, 0)
-    0
-
+    # >>> calculate_annuitet_credit(100_000, 0, 0)
+    # 0
+    >>> calculate_annuitet_credit(1_000_000, 24, 36) # doctest: +ELLIPSIS
+    39232.85...
     >>> calculate_annuitet_credit(0 , 10, 12)
     0.0
     """
@@ -17,7 +17,7 @@ def calculate_annuitet_credit(credit_sum, percent_in_year, credit_months):
     overpayment = final_sum - credit_sum
     # print("Переплата: ", overpayment)
     # print("Общая сумма кредита : ", final_sum)
-    # print("Ежемесячный платеж : ", monthly_pay)
+    # print("Ежемесячный платеж : ", monthly_payment)
     return monthly_payment
 
 
@@ -54,16 +54,16 @@ def calculate_differentiated_credit(credit_sum, percent_in_year, credit_months):
     0.0
     """
 
-    twelve_months = 12
-    hundred_percent = 100
-    # month_percent = (percent_in_year / hundred_percent) / twelve_months
     main_payment = credit_sum / credit_months
+    print(main_payment)
     while credit_sum > 0:
-        damping_payment = (credit_sum * percent_in_year) / (hundred_percent * twelve_months)
+        damping_payment = (credit_sum * percent_in_year) / (100 * 12)
         credit_sum = credit_sum - main_payment
-        print(credit_sum)
+        # print(credit_sum)
         print(damping_payment)
     return credit_sum
 
 
 print(calculate_differentiated_credit(120_000, 10, 12))
+print("-----------------")
+print(calculate_differentiated_credit(635_000, 21, 24))

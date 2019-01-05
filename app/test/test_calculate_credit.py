@@ -15,10 +15,10 @@ def test_calculate_annuitet_credit(credit_sum, percent_in_year, credit_months, e
 
 
 @pytest.mark.parametrize('credit_sum, percent_in_year, credit_months, expected', [
-    (120_000, 10, 12,
-     110000.0)
+    (2_520_199, 23, 120,)
+
 ])
-def calculate_differentiated_credit(credit_sum, percent_in_year, credit_months, expected):
+def test_calculate_differentiated_credit(credit_sum, percent_in_year, credit_months, expected):
     actual = app.calculate_credit.calculate_differentiated_credit(credit_sum, percent_in_year, credit_months)
 
     assert expected == pytest.approx(actual, 0.1)
